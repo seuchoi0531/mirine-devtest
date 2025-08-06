@@ -3,7 +3,8 @@ import { PerfumeInfo } from "./PerfumeEx";
 import PerfumeList from "./PerfumeList";
 
 export default async function LikeTest() {
-  const data: { ok: number; item: PerfumeInfo[] } = await getAllPerfumes();
+  const perfumeData: { ok: number; item: PerfumeInfo[] } = await getAllPerfumes();
+  const data = { ok: perfumeData.ok, item: perfumeData.item.slice(0, perfumeData.item.length - 11) };
 
   return (
     <PerfumeList data={data} />
